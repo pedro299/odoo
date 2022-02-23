@@ -13,22 +13,18 @@ class lot(models.Model):
     _client = 'customer desc, name'
  
     name = fields.Char('Product Lots', required = True, index = True)
-    short_name = fields.Char('Short product lots', translate=True, index=True)
-    notes = fields.Text('Internal Notes')
+    description = fields.Html('Description', sanitize = True, strip_style=False)
+    creation = fields.Date('Creation Date', required = True)
+    expiration = fields.Date('Expiration Date', required = True)
+
     state = fields.Selection(
         [('New', 'New'),
         ('New to expiry', 'New to expiry'),
         ('Timed out', 'Timed out')],
         'Status', default='New', required = True
     )
- 
-    description = fields.Html('Description', sanitize = True, strip_style=False)
-    creation = fields.Date('Creation Date', required = True)
-    expiration = fields.Date('Expiration Date', required = True)
+
     notice = fields.Datetime('Notice Date', required = True, copy = False)
  
-   
-   
-# estados - nuevo proximo a caducar caducado
-# categorias - corta media alta caducidad no caducan
-#1-n
+    #Relaciones
+    lots_products = fields.Many2many('product.template', string='Products')
