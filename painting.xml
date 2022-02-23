@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='painting_action' model='ir.actions.act_window'>
+        <field name="name">Gestión de obras artísticas</field>
+        <field name="res_model">obras</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Gestión de obras" id="painting_base_menu" />
+    <menuitem name="Obras" id="painting_art_menu" parent="painting_base_menu" action="painting_art_action" />
+
+    <!-- Form view -->
+    <record id="paintings_view_form" model="ir.ui.view">
+        <field name="name">Painting management Form</field>
+        <field name="model">obras</field>
+        <field name="arch" type="xml" />
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="odbra_id" />
+                            <field name="description" />
+                            <field name="style" />
+                            <field name="date_start" />
+                            <field name="date_end" />
+                        </group>
+                        <group>
+                            <field name="author_id" />
+                            <field name="pintura" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+    </record>
+
+    <!-- Tree(list) view -->
+    <record id="paintings_view_tree" model="ir.ui.view">
+        <field name="name">Painting management List</field>
+        <field name="model">obras</field>
+        <field name="arch" type="xml" />
+            <tree>
+                <field name="name" />
+                <field name="date_start" />
+            </tree>
+    </record>
+
+    <!-- Search view -->
+    <record id="paintings_view_search" model="ir.ui.view">
+        <field name="name">Painting management Search</field>
+        <field name="model">obras</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="author_id"/>
+                <filter string="Without Authors" name="without_author" domain="[('author_id','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>
