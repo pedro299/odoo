@@ -1,4 +1,3 @@
-from typing_extensions import Required
 from odoo import models, fields
 
 
@@ -16,14 +15,6 @@ class obras(models.Model):
     author_id = fields.Many2many('artistas')
     pintura = fields.One2many('direccion')
 
-    paint_type = fields.Selection(
-        [('Mate', 'Mate'),
-        ('Óleo', 'Óleo'),
-        ('Acrílica', 'Acrílica'),
-        ('Metalizada', 'Metalizada'),
-        ('Temple', 'Temple')],
-        'Type', default="Mate", required=True
-    )
     state = fields.Selection(
         [('unfinished', 'Unfinished'),
          ('finished', 'Finished'),

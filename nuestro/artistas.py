@@ -4,7 +4,8 @@ from odoo import models, fields
 
 class artistas(models.Model):
     _name = 'artistas'
-    _description = 'Artista'
+    _description = 'descripcion desc, desc'
+    _apodo = 'apodo desc, name'
 
     name = fields.Char('Nombre', required=True, index=True)
     apellidos = fields.Char('Apellidos', required=True)
