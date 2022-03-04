@@ -1,0 +1,76 @@
+<odoo>
+	<data>
+		<!-- Defino el report -->
+		<report id="artistasReport" model="artistas" string="Artistas Report" name="modulo_suspenso.artistas_report_view" file="artistas.report_artistas" report_type="qweb-html" />
+		<!-- Lo mismo en PDF -->
+		<report id="artistasReport_pdf" model="artistas" string="Artistas Report (PDF)" name="modulo_suspenso.artistas_report_view" file="artistas.report_artistas" report_type="qweb-pdf" />
+		<!-- Defino la plantilla para el report -->
+		<template id="artistas_report_view">
+			<t t-call="web.html_container">
+				<!-- Para cada autor -->
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="web.external_layout">
+						<div class="page">
+							<div class="container-fluid">
+								<h2 class="text-center mt32">
+									Nombre:
+									<span t-field="doc.name" />
+									<span t-field="doc.apellidos" />
+								</h2>
+								<div class="row mt32 mb32">
+									<div class="col-7">
+									</div>
+									<div class="col-3">
+										<p class="text-right">
+											Apodo:
+										</p>
+									</div>
+									<div class="col-2">
+										<p class="text-right">
+											<span t-field="doc.apodo" />
+										</p>
+									</div>
+								</div>
+								<div class="row mt32 mb32 border p-2">
+									<div class="col-12">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>
+														<span t-field="doc.id_artista" />-
+														<span t-field="doc.descripcion" />
+													</th>
+                                                    <th>
+                                                        <span t-field="doc.tipo" />
+                                                    </th>
+                                                    <th>
+                                                        <span t-field="doc.nacimiento" /> -
+                                                        <span t-field="doc.direccion.tipo" /> <span t-field="doc.direccion" />
+                                                    </th>
+												</tr>
+											</thead>
+											<tbody>
+												<td>
+													Obras Realizadas
+												</td>
+												<td>
+													<ul>
+														<li t-foreach="doc.obras" t-as="obras">
+															<span t-field="obras.name" />
+															<span t-field="obras.description" />
+                                                            <span t-field="obras.date_start" />
+														</li>
+													</ul>
+												</td>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

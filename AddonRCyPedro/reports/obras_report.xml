@@ -1,0 +1,74 @@
+<odoo>
+	<data>
+		<!-- Defino el report -->
+		<report id="obrasReport" model="obras" string="Obras Report" name="modulo_suspenso.obras_report_view" file="obras.report_obras" report_type="qweb-html" />
+		<!-- Lo mismo en PDF -->
+		<report id="obrasReport_pdf" model="obras" string="Obras Report (PDF)" name="modulo_suspenso.obras_report_view" file="obras.report_obras" report_type="qweb-pdf" />
+		<!-- Defino la plantilla para el report -->
+		<template id="obras_report_view">
+			<t t-call="web.html_container">
+				<!-- Para cada autor -->
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="web.external_layout">
+						<div class="page">
+							<div class="container-fluid">
+								<h2 class="text-center mt32">
+									Nombre de la obra:
+									<span t-field="doc.name" />
+								</h2>
+								<div class="row mt32 mb32">
+									<div class="col-7">
+									</div>
+									<div class="col-3">
+										<p class="text-right">
+											Id de la obra:
+										</p>
+									</div>
+									<div class="col-2">
+										<p class="text-right">
+											<span t-field="doc.obra_id" />
+										</p>
+									</div>
+								</div>
+								<div class="row mt32 mb32 border p-2">
+									<div class="col-12">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>
+														<span t-field="doc.description" />-
+														<span t-field="doc.style" />
+													</th>
+                                                    <th>
+                                                        <span t-field="doc.state" />
+                                                    </th>
+                                                    <th>
+                                                        <span t-field="doc.date_start" /> - 
+                                                        <span t-field="doc.date_end" />
+                                                    </th>
+												</tr>
+											</thead>
+											<tbody>
+												<td>
+													Artistas participantes:
+												</td>
+												<td>
+													<ul>
+														<li t-foreach="doc.artistas" t-as="artistas">
+															<span t-field="artistas.name" />
+															<span t-field="artistas.apellidos" />
+														</li>
+													</ul>
+												</td>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

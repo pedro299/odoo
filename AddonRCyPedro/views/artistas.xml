@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='artistas_action' model='ir.actions.act_window'>
+        <field name="name">Artistas</field>
+        <field name="res_model">artistas</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id='artistas_action_calendar' model='ir.actions.act_window'>
+        <field name="name">Artistas</field>
+        <field name="res_model">artistas</field>
+        <field name="view_mode">calendar</field>
+    </record>
+
+    <record id='artistas_action_kanban' model='ir.actions.act_window'>
+        <field name="name">Artistas</field>
+        <field name="res_model">artistas</field>
+        <field name="view_mode">kanban</field>
+    </record>
+
+    <menuitem name="Conglomerado" id="artistas_base_menu" />
+    <menuitem name="Artistas" id="artistas_menu" parent="artistas_base_menu" action="artistas_action" />
+    <menuitem name="Calendario" id="artistas_menu2" parent="artistas_base_menu" action="artistas_action_calendar" />
+    <menuitem name="Kanban" id="artistas_menu3" parent="artistas_base_menu" action="artistas_action_kanban" />
+
+    <record id="artistas_view_form" model="ir.ui.view">
+        <field name="name">Artistas Form</field>
+        <field name="model">artistas</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name" />
+                        <field name="apellidos" />
+                        <field name="apodo" />
+                        <field name="descripcion" />
+                        <field name="id_artista" />
+                        <field name="tipo" />
+                        <field name="nacimiento" />
+                        <field name="direccion" />
+                        <field name="obras" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="artistas_view_calendar" model="ir.ui.view">
+        <field name="name">Calendario de artistas</field>
+        <field name="model">artistas</field>
+        <field name="arch" type="xml">
+            <calendar string="Calendario de nacimientos" date_start="nacimiento" date_delay="nacimiento" mode="month">
+                <field name="name"/>
+                <field name="apellidos"/>
+                <field name="id_artista" />
+            </calendar>
+        </field>
+    </record>
+
+    <record id="artistas_view_tree" model="ir.ui.view">
+        <field name="name">Artistas List</field>
+        <field name="model">artistas</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="apellidos" />
+                <field name="apodo" />
+                <field name="descripcion" />
+                <field name="id_artista" />
+                <field name="tipo" />
+                <field name="nacimiento" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="library_book_view_search" model="ir.ui.view">
+        <field name="name">Artistas Search</field>
+        <field name="model">artistas</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="apellidos" />
+                <field name="apodo" />
+                <field name="descripcion" />
+                <field name="id_artista" />
+                <field name="tipo" />
+                <field name="nacimiento" />
+                <filter string="Con descripcion" name="with_desc" domain="[('descripcion','!=',False)]"/>
+                <filter string="Sin descripcion" name="without_desc" domain="[('descripcion','=',False)]"/>
+                <filter string="Con apodo" name="with_apodo" domain="[('apodo','!=',False)]"/>
+                <filter string="Sin apodo" name="without_apodo" domain="[('apodo','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="artistas_view_kanban" model="ir.ui.view">
+        <field name="name">Artistas Kanban</field>
+        <field name="model">artistas</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="tipo">
+                <field name="tipo" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_card">
+                                    <div>
+                                        <i class="fa fa-tag"/>
+                                        <b>
+                                            <field name="name" />
+                                        </b>
+                                    </div>
+                                    <div class="text-muted">
+                                        <i class="fa fa-book"/>
+                                        <field name="apellidos" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record> 
+
+</odoo>    

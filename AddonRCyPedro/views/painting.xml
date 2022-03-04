@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id='painting_action' model='ir.actions.act_window'>
+        <field name="name">Obras</field>
+        <field name="res_model">obras</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+	<record id='painting_action_calendar' model='ir.actions.act_window'>
+        <field name="name">Obras</field>
+        <field name="res_model">obras</field>
+        <field name="view_mode">calendar</field>
+    </record>
+
+    <record id='painting_action_kanban' model='ir.actions.act_window'>
+        <field name="name">Obras</field>
+        <field name="res_model">obras</field>
+        <field name="view_mode">kanban</field>
+    </record>
+
+	<menuitem name="Gestión de obras" id="painting_base_menu" />
+	<menuitem name="Paintings" id="painting_menu" parent="painting_base_menu" action="painting_action" />
+	<menuitem name="Painting calendar" id="painting_menu2" parent="painting_base_menu" action="painting_action_calendar" />
+    <menuitem name="Painting kanban" id="painting_menu3" parent="painting_base_menu" action="painting_action_kanban" />
+
+	<!-- Vista Formulario -->
+	<record id="obras_view_form" model="ir.ui.view">
+		<field name="name">Painting management Form</field>
+		<field name="model">obras</field>
+		<field name="arch" type="xml" >
+			<form>
+				<group>
+					<field name="name" />
+					<field name="obra_id" />
+					<field name="description" />
+					<field name="style" />
+					<field name="artistas" />
+					<field name="state" />
+					<field name="date_start" />
+					<field name="date_end" />
+				</group>
+			</form>
+		 </field>
+	</record>
+
+	<!-- Vista Calendario -->
+	<record id="obras_view_calendar" model="ir.ui.view">
+        <field name="name">Painting Management Calendar</field>
+        <field name="model">obras</field>
+        <field name="arch" type="xml">
+            <calendar string="Paintings Calendar" date_start="date_start" date_stop="date_end" mode="month">
+                <field name="name" />
+				<field name="date_start" />
+				<field name="date_end" />
+            </calendar>
+        </field>
+    </record>
+
+	<!-- Vista Búsqueda -->
+	<record id="obras_view_search" model="ir.ui.view">
+        <field name="name">Painting Search</field>
+        <field name="model">obras</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="obra_id" />
+				<filter string="Unfinished" name="state_unf" domain="[('state','=','unfinished')]"/>
+				<filter string="Finished" name="state_fin" domain="[('state','=','finished')]"/>
+				<filter string="A medias" name="state_med" domain="[('state','=','a_medias')]"/>
+            </search>
+        </field>
+    </record>
+
+	<!-- Vista Árbol -->
+	<record id="obras_view_tree" model="ir.ui.view">
+        <field name="name">Paintings List</field>
+        <field name="model">obras</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date_start"/>
+            </tree>
+        </field>
+    </record>
+
+	<!-- Kanban View -->
+    <record id="obras_kanban" model="ir.ui.view">
+        <field name="name">Paintings Kanban</field>
+        <field name="model">obras</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="state" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_card">
+                                    <div>
+                                        <i class="fa fa-tag"/>
+                                        <b>
+                                            <field name="obra_id" />
+                                        </b>
+                                    </div>
+                                    <div class="text-muted">
+                                        <i class="fa fa-obra"/>
+                                        <field name="name" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>  
+
+</odoo>
