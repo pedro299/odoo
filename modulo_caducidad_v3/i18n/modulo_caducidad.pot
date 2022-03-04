@@ -1,0 +1,169 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* modulo_caducidad
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0-20211119\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-04 18:51+0000\n"
+"PO-Revision-Date: 2022-03-04 18:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: modulo_caducidad
+#: model:ir.ui.menu,name:modulo_caducidad.lot_menu_calendar
+msgid "Calendar"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.ui.menu,name:modulo_caducidad.lot_menu_form
+msgid "Create Product Lots"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__creation
+msgid "Creation Date"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__description
+msgid "Description"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model_terms:ir.ui.view,arch_db:modulo_caducidad.report_products_view
+msgid "Description:"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__expiration
+msgid "Expiration Date"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.ui.menu,name:modulo_caducidad.lot_base_menu
+msgid "Expiration Management "
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__id
+msgid "ID"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.actions.act_window,name:modulo_caducidad.lot_calendar_action
+msgid "Lot Calendar"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.actions.act_window,name:modulo_caducidad.lot_action_form
+msgid "Lotes de productos"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields.selection,name:modulo_caducidad.selection__products__state__new
+msgid "New"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model_terms:ir.ui.view,arch_db:modulo_caducidad.lot_view_search
+msgid "New Product Lots"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields.selection,name:modulo_caducidad.selection__products__state__new_to_expiry
+msgid "New to expiry"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__notice
+msgid "Notice Date"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model_terms:ir.ui.view,arch_db:modulo_caducidad.report_products_view
+msgid "Producer's Lot Name:"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model,name:modulo_caducidad.model_products
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__name
+#: model:ir.ui.menu,name:modulo_caducidad.lot_menu_tree
+msgid "Product Lots"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__lots_products_ids
+msgid "Products"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.actions.act_window,name:modulo_caducidad.lot_action_tree
+#: model_terms:ir.ui.view,arch_db:modulo_caducidad.report_products_view
+msgid "Products Lot"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.actions.report,name:modulo_caducidad.report_products
+msgid "Products Lot Report"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.actions.report,name:modulo_caducidad.report_products_pdf
+msgid "Products Lot Report (PDF)"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model_terms:ir.ui.view,arch_db:modulo_caducidad.lot_view_calendar
+msgid "Release Calendar"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model_terms:ir.ui.view,arch_db:modulo_caducidad.report_products_view
+msgid "State:"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields,field_description:modulo_caducidad.field_products__state
+msgid "Status"
+msgstr ""
+
+#. module: modulo_caducidad
+#: model:ir.model.fields.selection,name:modulo_caducidad.selection__products__state__timed_out
+msgid "Timed out"
+msgstr ""

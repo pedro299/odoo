@@ -1,0 +1,81 @@
+<odoo>
+    <data>
+
+        <!-- Defino el report -->
+        <report
+            id="report_products"
+            model="products"
+            string="Products Lot Report"
+            name="modulo_caducidad.report_products_view"
+            file="products.report_products"
+            report_type="qweb-html" />
+
+        <!-- Lo mismo en PDF -->
+        <report
+            id="report_products_pdf"
+            model="products"
+            string="Products Lot Report (PDF)"
+            name="modulo_caducidad.report_products_view"
+            file="products.report_products"
+            report_type="qweb-pdf" />            
+
+         <!-- Defino la plantilla para el report -->
+         <template id="report_products_view">
+            <t t-call="web.html_container">
+                <!-- Para cada autor -->
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="container-fluid">
+                                <h2 class="text-center mt32">
+                                    Producer's Lot Name:
+                                    <span t-field="doc.name"/>
+                                </h2>
+                                <div class="row mt32 mb32">
+                                    <div class="col-7">
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="text-right">
+                                        Description:</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p class="text-right">
+                                            <span t-field="doc.description"/>
+                                        </p>
+                                    </div>
+                                    <div class="col-3">
+                                        <p class="text-right">
+                                            State:</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p class="text-right">
+                                            <span t-field="doc.state"/>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row mt32 mb32 border p-2">
+                                    <div class="col-12">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Products Lot</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr t-foreach="doc.lots_products_ids" t-as="products">
+                                                    <td><span t-field="products.name"/></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

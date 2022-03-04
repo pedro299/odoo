@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+    <record id='lot_action_form' model='ir.actions.act_window'>
+        <field name="name">Lotes de productos</field>
+        <field name="res_model">products</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
+
+    <record id='lot_action_tree' model='ir.actions.act_window'>
+        <field name="name">Products Lot</field>
+        <field name="res_model">products</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id='lot_calendar_action' model='ir.actions.act_window'>
+        <field name="name">Lot Calendar</field>
+        <field name="res_model">products</field>
+        <field name="view_mode">calendar</field>
+    </record>
+
+    <!-- Menu -->    
+    <menuitem name="Expiration Management " id="lot_base_menu"/>
+    <menuitem name="Create Product Lots" id="lot_menu_form" parent="lot_base_menu" action="lot_action_form"/>
+    <menuitem name="Product Lots" id="lot_menu_tree" parent="lot_base_menu" action="lot_action_tree"/>
+    <menuitem name="Calendar" id="lot_menu_calendar" parent="lot_base_menu" action="lot_calendar_action"/>
+
+    <!-- Form View (Crear producto) -->
+    <record id="lot_view_form" model="ir.ui.view">
+        <field name="name">Lot Form</field>
+        <field name="model">products</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name"/>                        
+                        <field name="description"/>                            
+                    </group>
+                    <group>
+                        <field name="lots_products_ids"/>
+                        <field name="creation"/>
+                        <field name="expiration"/>
+                        <field name="state"/>
+                        <field name="notice"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record> 
+
+    <!-- Tree(list) View (FUNCIONA) -->
+    <record id="lot_view_tree" model="ir.ui.view">
+        <field name="name">Lot List</field>
+        <field name="model">products</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="creation"/>
+                <field name="notice"/>
+                <field name="expiration"/>
+            </tree>
+        </field>
+    </record>
+ 
+    <!-- Calendar View (FUNCIONA) -->
+    <record id="lot_view_calendar" model="ir.ui.view">
+        <field name="name">Products Lot Calendar</field>
+        <field name="model">products</field>
+        <field name="arch" type="xml">
+            <calendar string="Release Calendar" date_start="expiration" mode="month">
+                <field name="name"/>
+                <field name="creation"/>
+                <field name="notice"/>
+                <field name="expiration"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Kanban View (FUNCIONA) -->
+    <record id="lot_rent_view_kanban" model="ir.ui.view">
+        <field name="name">Lot Kanban</field>
+        <field name="model">products</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="state" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="oe_kanban_card">
+                                    <div>
+                                        <i class="fa fa-tag"/>
+                                        <b>
+                                            <field name="expiration" />
+                                        </b>
+                                    </div>
+                                    <div class="text-muted">
+                                        <i class="fa fa-book"/>
+                                        <field name="name" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Search View (FUNCIONA) -->
+    <record id="lot_view_search" model="ir.ui.view">
+        <field name="name">Produtc Lot Search</field>
+        <field name="model">products</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="creation"/>
+                <filter string="New Product Lots" name="new_product_lots" domain="[('state','=','new')]"/>
+            </search>
+        </field>
+    </record>
+
+    </data>
+</odoo>
